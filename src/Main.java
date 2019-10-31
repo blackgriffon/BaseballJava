@@ -6,7 +6,8 @@ public class Main {
 
         //1
         Random random = new Random();
-        //
+
+        //2
 
         //2
 
