@@ -24,13 +24,9 @@ public class Main {
     }
 
     // live template
-        System.out.println("[정답]");
-        for (int answer : answers
-             ) {
-            System.out.print(answer + " ");
-        }
 
-        System.out.println();
+        printNumbers(answers, "정답");
+
 
 
     int tryCount = 0;
@@ -46,12 +42,8 @@ public class Main {
                 guesses.add(scanner.nextInt()); // parsing
             }
 
+            printNumbers(guesses, "추측");
 
-        System.out.println("[추측]");
-            for (int guess: guesses
-                 ) {
-                System.out.print(guess + " ");
-            }
 
 
         // 3. 결과를 계산한다.
@@ -81,4 +73,14 @@ public class Main {
     // 6. 도전횟수를 출력한다.
         System.out.println(String.format("Count : %d", tryCount));
 }
+
+    private static void printNumbers(ArrayList<Integer> numbers, String prefix) {
+        System.out.println("["+prefix+"]");
+        for (int number : numbers
+        ) {
+            System.out.print(number + " ");
+        }
+
+        System.out.println();
+    }
 }
