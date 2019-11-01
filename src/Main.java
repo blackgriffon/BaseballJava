@@ -10,38 +10,14 @@ public class Main {
         Random random = new Random(0);
 
         ArrayList<Integer> answers = new ArrayList<>();
-        answers.add(1);
-        answers.add(2);
-        answers.add(3);
-
-        for (int i = 0; i < answers.size(); i++) {
-            answers.set(i, i);
-        }
-        for (int answer : answers) {
-            System.out.println(answer);
-        }
-
-        HashSet<Integer> set = new HashSet<>();
-        set.add(1);
-        set.add(2);
-        set.add(3);
-        for (int answer : set) {
-            System.out.println(answer);
-        }
-
-    }
-
-
-    int answer0;
-    int answer1;
-    int answer2;
 
         while (true) {
-        answer0 = random.nextInt(Constant.MAX_NUMBER);
-        answer1 = random.nextInt(Constant.MAX_NUMBER);
-        answer2 = random.nextInt(Constant.MAX_NUMBER);
+            for (int i = 0; i < Constant.DIGIT; i++) {
+                answers.add(random.nextInt(Constant.MAX_NUMBER));
+            }
 
-        if (answer0 == answer1 || answer1 == answer2 || answer2 == answer0)
+        //TODO : 자릿수에 무관하게 구현하여야 함함
+        if(answers.get(0)== answers.get(1) || answers.get(1)== answers.get(2)  || answers.get(2)== answers.get(0) )
             continue;
 
         break;
@@ -49,9 +25,11 @@ public class Main {
 
     // live template
         System.out.println("[정답]");
-        System.out.print(answer0 + " ");
-        System.out.print(answer1 + " ");
-        System.out.print(answer2 + " ");
+        for (int answer : answers
+             ) {
+            System.out.print(answer + " ");
+        }
+
         System.out.println();
 
 
@@ -61,14 +39,13 @@ public class Main {
         tryCount++;
 
         // 2. 추측을 입력받는다.
-        int guess0;
-        int guess1;
-        int guess2;
+            ArrayList<Integer> guesses = new ArrayList<>();
 
         Scanner scanner = new Scanner(System.in);
-        guess0 = scanner.nextInt(); // parsing
-        guess1 = scanner.nextInt(); // parsing
-        guess2 = scanner.nextInt(); // parsing
+            for (int i = 0; i < Constant.DIGIT; i++) {
+                guesses.add(scanner.nextInt()); // parsing
+            }
+
 
         System.out.println("[추측]");
         System.out.print(guess0 + " ");
