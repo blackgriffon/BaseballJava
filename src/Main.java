@@ -55,27 +55,25 @@ public class Main {
 
 
         // 3. 결과를 계산한다.
-        int strike = 0;
-        int ball = 0;
-        int out = 0;
+            Result result = new Result();
 
             for (int i = 0; i < Constant.DIGIT; i++) {
                 int j = (i + 1) % Constant.DIGIT;
                 int k = (i + 2) % Constant.DIGIT;
                 if (answers.get(i) == guesses.get(i))
-                    strike++;
+                    result.strike++;
                 else if (answers.get(i) == guesses.get(j) || answers.get(i) == guesses.get(k))
-                    ball++;
+                    result.ball++;
                 else
-                    out++;
+                    result.out++;
             }
 
         // 4. 결과를 출력한다.
-        System.out.println(String.format("S:%d B:%d O:%d", strike, ball, out));
+        System.out.println(String.format("S:%d B:%d O:%d", result.strike, result.ball, result.out));
 
 
         // 5. 3S 아니면 2번으로 돌아간다.
-        if (strike == Constant.DIGIT)
+        if (result.strike == Constant.DIGIT)
             break;
     }
 
