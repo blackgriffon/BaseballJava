@@ -48,10 +48,10 @@ public class Main {
 
 
         System.out.println("[추측]");
-        System.out.print(guess0 + " ");
-        System.out.print(guess1 + " ");
-        System.out.print(guess2 + " ");
-        System.out.println();
+            for (int guess: guesses
+                 ) {
+                System.out.print(guess + " ");
+            }
 
 
         // 3. 결과를 계산한다.
@@ -59,27 +59,16 @@ public class Main {
         int ball = 0;
         int out = 0;
 
-        if (answer0 == guess0)
-            strike++;
-        else if (answer0 == guess1 || answer0 == guess2)
-            ball++;
-        else
-            out++;
-
-        if (answer1 == guess1)
-            strike++;
-        else if (answer1 == guess2 || answer1 == guess0)
-            ball++;
-        else
-            out++;
-
-        if (answer2 == guess2)
-            strike++;
-        else if (answer2 == guess0 || answer2 == guess1)
-            ball++;
-        else
-            out++;
-
+            for (int i = 0; i < Constant.DIGIT; i++) {
+                int j = (i + 1) % Constant.DIGIT;
+                int k = (i + 2) % Constant.DIGIT;
+                if (answers.get(i) == guesses.get(i))
+                    strike++;
+                else if (answers.get(i) == guesses.get(j) || answers.get(i) == guesses.get(k))
+                    ball++;
+                else
+                    out++;
+            }
 
         // 4. 결과를 출력한다.
         System.out.println(String.format("S:%d B:%d O:%d", strike, ball, out));
